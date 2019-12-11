@@ -66,15 +66,16 @@ function processLength(list, callback) {
  * Invoking `processLastItem` passing `['foo', 'bar']` and `(str) => str + str`,
  * should return 'barbar'.
 */
-function processLastItem(stringList, callback) {
-  const element = stringList[stringList.length - 1]; {
-    callback(element);
-  }
+
+function processLastItem(stringList, callback/*parameter data out*/) {
+  const element = stringList[stringList.length - 1]; 
+    return callback(element);
+    /*argument data in*/
+  
 
 
-  const lastItem = callback(element, function () {
-  });
-  return (lastItem);
+
+  
 }
 
 
@@ -144,10 +145,10 @@ function processProduct(num1, num2, callback/* CODE HERE */) {
  * "lady gaga" and `['foo', 'bar']` and `(bool) => bool ? 'nice!' : 'sad'`,
  * should return "sad".
 */
-function processContains(/* CODE HERE */) {
-  /* CODE HERE */
-}
+function processContains(item, list, callback) {
+return callback(list.includes(item));
 
+}
 /**
  * ### Challenge `processDuplicateFree`
  * THIS IS A STRETCH PROBLEM! ATTEMPT ONLY AFTER COMPLETING ALL NON-STRETCH CHALLENGES!
@@ -167,8 +168,10 @@ function processContains(/* CODE HERE */) {
  * [2] Invoking `processDuplicateFree` passing `[1,1,2,2,3]` and `(arr) => arr.length`,
  * should return 3.
 */
-function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */) {
-  /* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */
+function processDuplicateFree(list, callback) {
+  return callback(list.filter((_list, i, array) => {
+  	if (array.indexOf(_list) === i) return _list;
+  }));
 }
 
 /////////////// HIGHER-ORDER ARRAY METHODS ///////////////
@@ -189,8 +192,12 @@ function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS
  * @returns an array with all the runners' full names in the following format: "Smith, John".
  * The full names appear in the array in the same order the runners appear in the `runners` array.
 */
-function getFullNames(/* CODE HERE */) {
-  /* CODE HERE */
+function getFullNames(runners) {
+  let Names = [];
+  runners.forEach((runer) => {
+    Names.push(`${runer.last_name}, ${runer.first_name}`)
+  });
+  return Names;
 }
 
 /**
@@ -205,10 +212,10 @@ function getFullNames(/* CODE HERE */) {
  * @returns an array with all the runners' first names in ALL CAPS.
  * The first names appear in the array in the same order the runners appear in the `runners` array.
 */
-function firstNamesAllCaps(/* CODE HERE */) {
-  /* CODE HERE */
+function firstNamesAllCaps(runners) {
+  return runners.map((upper) => `${upper.first_name.toUpperCase()}`);
+  
 }
-
 /**
  * ### Challenge `getRunnersByTShirtSize`
  * 
