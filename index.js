@@ -48,8 +48,8 @@ function processFirstItem(stringList, callback) {
  * [2] Invoking `processLength` passing `[]` and `(num) => "There are " + num`,
  * should return "There are 0".
 */
-function processLength(/* CODE HERE */) {
-  /* CODE HERE */
+function processLength(list, callback) {
+  return callback(list.length);
 }
 
 /**
@@ -66,9 +66,17 @@ function processLength(/* CODE HERE */) {
  * Invoking `processLastItem` passing `['foo', 'bar']` and `(str) => str + str`,
  * should return 'barbar'.
 */
-function processLastItem(/* CODE HERE */) {
-  /* CODE HERE */
+function processLastItem(stringList, callback) {
+  const element = stringList[stringList.length - 1]; {
+    callback(element);
+  }
+
+
+  const lastItem = callback(element, function () {
+  });
+  return (lastItem);
 }
+
 
 /**
  * ### Challenge `processSum`
@@ -81,15 +89,18 @@ function processLastItem(/* CODE HERE */) {
  * @returns the result of invoking `callback` passing the SUM of all elements in `numberList`.
  * 
  * Examples of usage of this higher-order function:
- * [1] Invoking `processSum` passing `[10, 20, 30]` and `(num) => num + " is a big number!"`,
+ * [1] Invoking `processSum` passing `` and `(num) => num + " is a big number!"`,
  * should return "60 is a big number!".
  * 
- * [2] Invoking `processSum` passing `[]` and `(num) => num + 1000`,
+ * [2] Invoking `processSum` passing `[]` and `(num) => num + `,
  * should return 1000.
 */
-function processSum(/* CODE HERE */) {
-  /* CODE HERE */
+function processSum(numberList, callback) {
+  return callback(numberList.reduce(((a, b) => a + b), 0));
 }
+
+
+
 
 /**
  * ### Challenge `processProduct`
@@ -109,8 +120,8 @@ function processSum(/* CODE HERE */) {
  * [2] Invoking `processProduct` passing 25 and 0 and `(num) => num + 1000`,
  * should return 1000.
 */
-function processProduct(/* CODE HERE */) {
-  /* CODE HERE */
+function processProduct(num1, num2, callback/* CODE HERE */) {
+  return callback((num1 * num2));/* CODE HERE */
 }
 
 /**
