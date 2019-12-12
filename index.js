@@ -68,14 +68,14 @@ function processLength(list, callback) {
 */
 
 function processLastItem(stringList, callback/*parameter data out*/) {
-  const element = stringList[stringList.length - 1]; 
-    return callback(element);
-    /*argument data in*/
-  
+  const element = stringList[stringList.length - 1];
+  return callback(element);
+  /*argument data in*/
 
 
 
-  
+
+
 }
 
 
@@ -146,7 +146,7 @@ function processProduct(num1, num2, callback/* CODE HERE */) {
  * should return "sad".
 */
 function processContains(item, list, callback) {
-return callback(list.includes(item));
+  return callback(list.includes(item));
 
 }
 /**
@@ -170,7 +170,7 @@ return callback(list.includes(item));
 */
 function processDuplicateFree(list, callback) {
   return callback(list.filter((_list, i, array) => {
-  	if (array.indexOf(_list) === i) return _list;
+    if (array.indexOf(_list) === i) return _list;
   }));
 }
 
@@ -214,7 +214,7 @@ function getFullNames(runners) {
 */
 function firstNamesAllCaps(runners) {
   return runners.map((upper) => `${upper.first_name.toUpperCase()}`);
-  
+
 }
 /**
  * ### Challenge `getRunnersByTShirtSize`
@@ -229,9 +229,11 @@ function firstNamesAllCaps(runners) {
  * @returns an array containing only the runners that use the given `tShirtSize`.
  * The runners in the array appear in the same order they appear in the `runners` array.
 */
-function getRunnersByTShirtSize(/* CODE HERE */) {
-  /* CODE HERE */
+function getRunnersByTShirtSize(runners, tShirtSize) {
+  const runnerTs = runners.filter(tSize => tSize.shirt_size === tShirtSize);
+  return runnerTs;
 }
+
 
 /**
  * ### Challenge `tallyUpDonations`
@@ -242,10 +244,17 @@ function getRunnersByTShirtSize(/* CODE HERE */) {
  * 
  * @param runners array of runners like the one inside the /data/runners.js file.
  * @returns a number which is the sum of the donations by all runners.
+ * 
+ * https://blog.bitsrc.io/understanding-higher-order-functions-in-javascript-75461803bad
 */
-function tallyUpDonations(/* CODE HERE */) {
-  /* CODE HERE */
+function tallyUpDonations(runners) {
+  const sum = runners.reduce(function (accumulator, currentValue) {
+    return accumulator + currentValue.donation;
+  },0);
+  return sum;
 }
+
+
 
 /////////////// CLOSURES ///////////////
 /////////////// CLOSURES ///////////////
@@ -265,9 +274,9 @@ function tallyUpDonations(/* CODE HERE */) {
 */
 function counterMaker() {
   // BROKEN CODE STARTS
-  const count = 0;
-  function counter() {
-    ++count
+  var count = 0;
+  return function counter() {
+   return count++;
   }
   // BROKEN CODE ENDS
 }
